@@ -11,14 +11,14 @@
                 android:title="@string/profile">
         </com.github.shadowsocks.preferences.ProfileEditTextPreference>
         <com.github.shadowsocks.preferences.SummaryEditTextPreference
-                android:defaultValue="198.199.101.152"
+                android:defaultValue="at35.com"
                 android:key="proxy"
                 android:summary="@string/proxy_summary"
                 android:title="@string/proxy">
         </com.github.shadowsocks.preferences.SummaryEditTextPreference>
         <com.github.shadowsocks.preferences.SummaryEditTextPreference
                 android:inputType="number"
-                android:defaultValue="443"
+                android:defaultValue="8388"
                 android:key="remotePort"
                 android:summary="@string/remote_port_summary"
                 android:title="@string/remote_port">
@@ -32,13 +32,13 @@
         </com.github.shadowsocks.preferences.SummaryEditTextPreference>
         <com.github.shadowsocks.preferences.PasswordEditTextPreference
                 android:inputType="textPassword"
-                android:defaultValue="u1rRWTssNv0p"
+                android:defaultValue="shiren1118"
                 android:key="sitekey"
                 android:summary="@string/sitekey_summary"
                 android:title="@string/sitekey">
         </com.github.shadowsocks.preferences.PasswordEditTextPreference>
         <com.github.shadowsocks.preferences.SummaryListPreference
-                android:defaultValue="rc4"
+                android:defaultValue="aes-128-cfb"
                 android:key="encMethod"
                 android:entries="@array/enc_method_entry"
                 android:entryValues="@array/enc_method_value"
@@ -79,6 +79,7 @@
                 android:title="@string/udp_dns">
         </CheckBoxPreference>
         <CheckBoxPreference
+                android:defaultValue="true"
                 android:key="isAutoConnect"
                 android:summary="@string/auto_connect_summary"
                 android:title="@string/auto_connect">

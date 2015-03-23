@@ -426,22 +426,7 @@ class Shadowsocks
   }
 
   def initAdView() {
-    if (settings.getString(Key.proxy, "") == "198.199.101.152") {
-      val layoutView = {
-        if (Build.VERSION.SDK_INT > 10) {
-          drawer.getContentContainer.getChildAt(0)
-        } else {
-          getLayoutView(drawer.getContentContainer.getParent)
-        }
-      }
-      if (layoutView != null) {
-        val adView = new AdView(this)
-        adView.setAdUnitId("ca-app-pub-9097031975646651/7760346322")
-        adView.setAdSize(AdSize.SMART_BANNER)
-        layoutView.asInstanceOf[ViewGroup].addView(adView, 0)
-        adView.loadAd(new AdRequest.Builder().build())
-      }
-    }
+  
   }
 
   override def setContentView(layoutResId: Int) {
