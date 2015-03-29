@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <string name="app_name">Shadowsocks</string>
-  <string name="screen_name">shadowsocks</string>
+  <string name="app_name">eggwifi</string>
+  <string name="screen_name">eggwifi</string>
 
   <!-- function category -->
   <string name="function_cat">Service Controller</string>
@@ -14,13 +14,13 @@
   <string name="profile">Profile</string>
   <string name="profile_summary">Profile name</string>
   <string name="proxy">Server</string>
-  <string name="proxy_summary">Hostname or IP Address of your Shadowsocks server</string>
+  <string name="proxy_summary">Hostname or IP Address of your eggwifi server</string>
   <string name="remote_port">Remote Port</string>
-  <string name="remote_port_summary">Port number of your Shadowsocks server</string>
+  <string name="remote_port_summary">Port number of your eggwifi server</string>
   <string name="port">Local Port</string>
-  <string name="port_summary">Port number of your Shadowsocks client</string>
+  <string name="port_summary">Port number of your eggwifi client</string>
   <string name="sitekey">Password</string>
-  <string name="sitekey_summary">Password of your Shadowsocks server</string>
+  <string name="sitekey_summary">Password of your eggwifi server</string>
   <string name="enc_method">Encrypt Method</string>
 
   <!-- feature category -->
@@ -42,19 +42,19 @@
   <string name="bypass_apps">Bypass Mode</string>
   <string name="bypass_apps_summary">Enable this option to bypass selected apps</string>
   <string name="auto_connect">Auto Connect</string>
-  <string name="auto_connect_summary">Enable Shadowsocks on startup</string>
+  <string name="auto_connect_summary">Enable eggwifi on startup</string>
   <string name="traffic_stat">Traffic Stats</string>
   <string name="traffic_stat_summary">Show traffic stats in notification bar</string>
   <string name="udp_dns">UDP Forwarding</string>
   <string name="udp_dns_summary">Forward UDP packets to remote server</string>
 
   <!-- notification category -->
-  <string name="forward_success">Shadowsocks started.</string>
+  <string name="forward_success">eggwifi started.</string>
   <string name="service_running">Connected to "%s"</string>
   <string name="service_status" formatted="false">Current Rate: %d KB/s</string>
-  <string name="forward_fail">Shadowsocks failed to start.</string>
-  <string name="service_stopped">Shadowsocks stopped.</string>
-  <string name="forward_stop">Shadowsocks stopped.</string>
+  <string name="forward_fail">eggwifi failed to start.</string>
+  <string name="service_stopped">eggwifi stopped.</string>
+  <string name="forward_stop">eggwifi stopped.</string>
   <string name="service_failed">Failed to connect the remote server</string>
   <string name="stop">Stop the service</string>
   <string name="stopping">Shutting down...</string>
@@ -83,7 +83,7 @@
   <string name="settings">Settings</string>
   <string name="recovery">Reset</string>
   <string name="about">About</string>
-  <string name="about_title">Shadowsocks %s</string>
+  <string name="about_title">eggwifi %s</string>
   <string name="flush_dnscache">Flush DNS Cache</string>
   <string name="flushing">Flushing</string>
   <string name="add_profile">Add Profile</string>
@@ -95,7 +95,7 @@
   <string name="action_import_err">Failed to import.</string>
 
   <!-- profile -->
-  <string name="add_profile_dialog">Add this Shadowsocks Profile?</string>
+  <string name="add_profile_dialog">Add this eggwifi Profile?</string>
   <string-array name="add_profile_methods">
     <item>Scan QR code</item>
     <item>Manual Settings</item>
