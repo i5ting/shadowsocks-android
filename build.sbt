@@ -19,6 +19,14 @@ typedResources in Android := false
 
 resolvers += "JRAF" at "http://JRAF.org/static/maven/2"
 
+resolvers += "mvnrepository" at "http://mvnrepository.com/"
+
+libraryDependencies ++= Seq(
+  "com.google.code.gson" % "gson" % "2.3",
+  "com.loopj.android" % "android-async-http" % "1.4.6",
+  "com.google.zxing" % "core" % "3.1.0"
+)
+
 resolvers += "madeye private releases" at "http://madeye-maven-repository.googlecode.com/git/"
 
 libraryDependencies ++= Seq(
