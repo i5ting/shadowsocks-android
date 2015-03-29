@@ -185,6 +185,21 @@ class Shadowsocks
   var currentProfile = new Profile
   var vpnEnabled = -1
 
+    
+    var runnable:Runnable =new Runnable{
+        override def run() {    // TODO Auto-generated method stub
+            //要做的事情
+            
+            if (switchButton.isEnabled) {
+                changeSwitch(checked = true)
+                remove_start_check()
+                
+                onCheckedChanged(compoundButton = switchButton, checked = true) 
+            }else{
+              handler.postDelayed(this, 2000);
+            }
+        }
+    };
   // Services
   var currentServiceName = classOf[ShadowsocksNatService].getName
   var bgService: IShadowsocksService = null
@@ -260,9 +275,13 @@ class Shadowsocks
       handler.postDelayed(new Runnable {
         override def run() {
           switchButton.setEnabled(true)
+ 
+          //attachService()
         }
       }, 1000)
     }
+    
+    
     switchButton.setOnCheckedChangeListener(this)
   }
 
@@ -412,6 +431,9 @@ class Shadowsocks
         handler.postDelayed(new Runnable {
           override def run() {
             switchButton.setEnabled(true)
+
+ 
+            attachService()
           }
         }, 1000)
       }
@@ -458,6 +480,7 @@ class Shadowsocks
         h.sendEmptyMessage(0)
       }
     }
+
 
     // Initialize drawer
     menuAdapter.setActiveId(settings.getInt(Key.profileId, -1))
@@ -515,15 +538,33 @@ class Shadowsocks
         }
       })
     }
+    
+    
+  //  # var handler:Handler=new Handler();
+ 
+ 
+    
+    handler.postDelayed(runnable, 200);//每两秒执行一次runnable.
+  
+  }
+  
+
+  def remove_start_check() {
+      handler.removeCallbacks(runnable);
   }
 
   def attachService() {
+    if (switchButton.isEnabled) {
+        handler.removeCallbacks(runnable);
+    }
     if (bgService == null) {
       val s = if (!isVpnEnabled) classOf[ShadowsocksNatService] else classOf[ShadowsocksVpnService]
       val intent = new Intent(this, s)
       intent.setAction(Action.SERVICE)
       bindService(intent, connection, Context.BIND_AUTO_CREATE)
       startService(new Intent(this, s))
+      // 首次理解启动服务器
+      Toast.makeText(getBaseContext, "首次理解启动服务器", Toast.LENGTH_LONG).show()
     }
   }
 
@@ -692,6 +733,7 @@ class Shadowsocks
 
     val buf = new ListBuffer[Any]()
 
+
     buf += new Category(getString(R.string.profiles))
 
     buf ++= getProfileList
@@ -844,6 +886,9 @@ class Shadowsocks
     }
     Console.runCommand(ab.toArray)
 
+    changeSwitch(checked = true)
+    prepareStartService()
+    attachService()
   }
 
   private def recovery() {

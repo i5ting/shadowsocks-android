@@ -44,6 +44,27 @@
       </intent-filter>
     </activity>
 
+    <!-- <activity
+        android:name=".FirstActivity"
+        android:label="@string/app_name" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+     -->
+    
+    <receiver
+        android:name=".StartVpnBroadcast"
+        android:enabled="true"
+        android:exported="true" >
+        <intent-filter>
+            <action android:name="com.data8000.action.StartVpnBroadcast" />
+        </intent-filter>
+    </receiver>
+    
+    
     <activity
         android:name=".ParserActivity"
         android:theme="@style/PopupTheme"

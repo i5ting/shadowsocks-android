@@ -447,6 +447,8 @@ class ShadowsocksVpnService extends VpnService with BaseService {
         } else {
           resolved = true
         }
+        
+        println("vpn resolved =" + resolved + " && handleConnection=" + handleConnection )
 
         if (resolved && handleConnection) {
           changeState(State.CONNECTED)

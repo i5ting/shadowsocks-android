@@ -582,6 +582,11 @@ class ShadowsocksNatService extends Service with BaseService {
           resolved = true
         }
 
+
+        println("nat resolved =" + resolved + " && handleConnection=" + handleConnection )
+        
+    
+          
         if (resolved && handleConnection) {
 
           // Set DNS
