@@ -12,7 +12,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-
 public class FirstActivity extends Activity {
 
     @Override
@@ -36,7 +35,7 @@ public class FirstActivity extends Activity {
                                    Intent intent = new Intent(FirstActivity.this,Shadowsocks.class );
                                    intent.putExtra("url","http://weibo.com");
                                    startActivity(intent);
-                                   finish();
+                                   // finish();
                           }catch(Exception e){
                              
                           }
