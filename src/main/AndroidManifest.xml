@@ -38,13 +38,10 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Shadowsocks"
         android:launchMode="singleTask">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
+    
     </activity>
 
-    <!-- <activity
+    <activity
         android:name=".FirstActivity"
         android:label="@string/app_name" >
         <intent-filter>
@@ -53,7 +50,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-     -->
+
     
     <receiver
         android:name=".StartVpnBroadcast"

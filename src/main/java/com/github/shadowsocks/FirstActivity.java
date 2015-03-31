@@ -3,6 +3,7 @@ package com.github.shadowsocks;
 import android.app.Activity;
 import android.content.Intent;
 // import android.support.v7.app.ActionBarActivity;
+import android.os.Handler;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,9 +28,20 @@ public class FirstActivity extends Activity {
             @Override
             public void onClick(View v) {
 //            Toast.makeText(FirstActivity.this, "lkkk",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent("com.data8000.action.StartVpnBroadcast");
-            sendBroadcast(intent);
-
+ 
+                    new Handler().postDelayed(new Runnable() {
+                         @Override
+                         public void run() {
+                           try{
+                                   Intent intent = new Intent(FirstActivity.this,Shadowsocks.class );
+                                   intent.putExtra("url","http://weibo.com");
+                                   startActivity(intent);
+                                   finish();
+                          }catch(Exception e){
+                             
+                          }
+                        }
+                  }, 5);
             }
         });
     }

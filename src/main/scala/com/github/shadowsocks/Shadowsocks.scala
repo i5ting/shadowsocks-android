@@ -38,9 +38,25 @@
  */
 package com.github.shadowsocks
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+
 import java.util
 import java.io.{OutputStream, InputStream, ByteArrayInputStream, ByteArrayOutputStream, IOException, FileOutputStream}
 import java.util.Locale
+
+import android.net.http.SslError;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import android.app.backup.BackupManager
 import android.app.{Activity, AlertDialog, ProgressDialog}
@@ -166,6 +182,8 @@ object Shadowsocks {
   }
 }
 
+
+
 class Shadowsocks
   extends PreferenceActivity
   with CompoundButton.OnCheckedChangeListener
@@ -252,6 +270,11 @@ class Shadowsocks
 
   private lazy val application = getApplication.asInstanceOf[ShadowsocksApplication]
 
+  var url = "http://twitter.com/"
+  var webView: WebView = null
+  var refreshLayout: ScrollSwipeRefreshLayout = null
+   
+    
   var handler: Handler = null
 
   def isSinglePane: Boolean = {
@@ -460,10 +483,31 @@ class Shadowsocks
   override def onCreate(savedInstanceState: Bundle) {
 
     super.onCreate(savedInstanceState)
+    
+
+    if(getIntent().getStringExtra("url") != null){
+        url = getIntent().getStringExtra("url");
+    }
 
     handler = new Handler()
 
     addPreferencesFromResource(R.xml.pref_all)
+    
+   
+   drawer.setContentView(R.layout.web_view_activity)
+   webView = this.findViewById(R.id.webview_view).asInstanceOf[WebView]
+		webView.loadUrl(url);
+ 
+		webView.setWebViewClient(new WebViewClient{
+			override def onReceivedSslError(view :WebView,
+					 f : SslErrorHandler,  error: SslError) {
+				f.proceed(); // 接受所有网站的证书
+			}
+
+			override def shouldOverrideUrlLoading( view: WebView,url : String): Boolean= {
+				  return false
+			}
+		});
 
     // Initialize the profile
     currentProfile = {
@@ -481,7 +525,7 @@ class Shadowsocks
       }
     }
 
-
+ 
     // Initialize drawer
     menuAdapter.setActiveId(settings.getInt(Key.profileId, -1))
     menuAdapter.setListener(this)
@@ -539,6 +583,7 @@ class Shadowsocks
       })
     }
     
+  
     
   //  # var handler:Handler=new Handler();
  
@@ -546,8 +591,18 @@ class Shadowsocks
     
     handler.postDelayed(runnable, 200);//每两秒执行一次runnable.
   
+    // drawer.setVisibility(View.GONE)
+    
+  
+  
+   
   }
   
+
+  def set_webview() {
+  	
+  }
+
 
   def remove_start_check() {
       handler.removeCallbacks(runnable);
@@ -565,6 +620,7 @@ class Shadowsocks
       startService(new Intent(this, s))
       // 首次理解启动服务器
       Toast.makeText(getBaseContext, "首次理解启动服务器", Toast.LENGTH_LONG).show()
+      
     }
   }
 
@@ -892,12 +948,16 @@ class Shadowsocks
   }
 
   private def recovery() {
+    /**
     val h = showProgress(getString(R.string.recovering))
     serviceStop()
     spawn {
       reset()
       h.sendEmptyMessage(0)
-    }
+    }*/
+    
+    //webView.reload();
+    webView.loadUrl("http://wap.baidu.com");
   }
 
   private def flushDnsCache() {
